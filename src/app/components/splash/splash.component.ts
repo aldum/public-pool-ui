@@ -30,7 +30,7 @@ export class SplashComponent {
 
   private info$: Observable<any>;
 
-  private networkInfo:any;
+  private networkInfo: any;
 
   constructor(private appService: AppService, private cdr: ChangeDetectorRef) {
 
@@ -117,7 +117,7 @@ export class SplashComponent {
           ticks: {
             color: textColorSecondary,
             callback: (value: number) => {
-                return HashSuffixPipe.transform(value) + " - " + AverageTimeToBlockPipe.transform(value, this.networkInfo.difficulty);
+              return HashSuffixPipe.transform(value) + " - " + AverageTimeToBlockPipe.transform(value, this.networkInfo.difficulty);
             }
           },
           grid: {
