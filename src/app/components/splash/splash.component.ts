@@ -36,7 +36,17 @@ export class SplashComponent {
 
     this.info$ = this.appService.getInfo().pipe(shareReplay({ refCount: true, bufferSize: 1 }));
 
-    if (environment.STRATUM_URL.length > 1) {
+    interface DynamicObject {
+      [key: string]: any; // Allows any string as a key
+    }
+    const newWindow: DynamicObject = {}
+    const browserWindow = window || newWindow;
+    const evk = '__env' as keyof typeof browserWindow;
+    const browserWindowEnv = browserWindow[evk] || {};
+    const envStrat: string = browserWindowEnv['STRATUM_URL']
+    if (envStrat.length > 1) {
+      this.stratumURL = envStrat
+    } else if (environment.STRATUM_URL.length > 1) {
       this.stratumURL = environment.STRATUM_URL;
     } else {
       this.stratumURL = window.location.hostname + ':3333';
