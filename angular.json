@@ -28,7 +28,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/env.js"
+              "src/env/env.js"
             ],
             "styles": [
               "src/styles.scss"
